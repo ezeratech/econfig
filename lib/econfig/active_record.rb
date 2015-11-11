@@ -25,6 +25,10 @@ module Econfig
       Set.new([])
     end
 
+    def has_key?(key)
+      self.keys.include?(key)
+    end
+
     def get(key)
       if option = Option.find_by_key(key)
         option.value

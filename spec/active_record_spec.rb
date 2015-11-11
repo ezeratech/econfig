@@ -26,6 +26,16 @@ describe Econfig::ActiveRecord do
     end
   end
 
+  describe '#has_key?' do
+    it 'returns true if there is a config item with the given key' do
+      backend.set('foo', '123')
+      backend.has_key?('foo').should eq(true)
+    end
+    it 'returns false if there is no config item with the given key' do
+      backend.has_key?('bar').should eq(false)
+    end
+  end
+
   describe "#get" do
     it "fetches a previously set option" do
       backend.set("foo", "bar")
