@@ -44,18 +44,18 @@ module Econfig
     end
     alias_method :[]=, :set
 
-    def method_missing(name, *args)
-      if respond_to?(name)
-        raise ArgumentError, "too many arguments (#{args.length} for 0)" if args.length > 0
-        if ::ENV["ECONFIG_PERMISSIVE"].to_s.empty?
-          fetch(name)
-        else
-          self[name]
-        end
-      else
-        super
-      end
-    end
+    #def method_missing(name, *args)
+      #if respond_to?(name)
+        #raise ArgumentError, "too many arguments (#{args.length} for 0)" if args.length > 0
+        #if ::ENV["ECONFIG_PERMISSIVE"].to_s.empty?
+          #fetch(name)
+        #else
+          #self[name]
+        #end
+      #else
+        #super
+      #end
+    #end
 
     def respond_to_missing?(name, *)
       name = name.to_s
